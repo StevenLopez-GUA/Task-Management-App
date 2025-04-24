@@ -1,4 +1,3 @@
-```markdown
 # React Task Management App
 
 **Autor:** Steven Alejandro López del Cid
@@ -162,7 +161,3 @@ Configurado en `AppRoutes.jsx` usando React Router v6.
   - Renderizado de componentes clave (`TaskForm`, `TaskList`).  
   - Simulación de eventos (`añadir`, `editar`, `eliminar`).  
   - Validación de filtros y cambio de estado.
-
----
-
-```
