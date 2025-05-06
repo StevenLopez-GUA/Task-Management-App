@@ -1,13 +1,12 @@
 import React from 'react'
-import './App.css'
-import AppRouters from './routes/AppRoutes'
+import Navbar from './components/Navbar'
+import AppRoutes from './routes/AppRoutes'
 
-function App() {
+export default function App() {
   return (
     <div className="min-h-screen bg-gray-50">
-      <AppRouters />
+      <Navbar />
+      <AppRoutes />
     </div>
   )
 }
-
-export default App

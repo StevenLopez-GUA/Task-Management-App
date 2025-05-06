@@ -15,7 +15,7 @@ export default function AppRouters() {
             <Route path="/tasks/new" element={<TaskFormPage />} />
             <Route path="/tasks/:id/edit" element={<TaskFormPage />} />
             <Route path="/calendar" element={<CalendarPage />} />
-            <Route path="*" element={<NotFound />} />
+            {/* <Route path="*" element={<NotFound />} /> */}
 
         </Routes>
     )
