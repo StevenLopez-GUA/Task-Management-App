@@ -1,6 +1,10 @@
 export const initialState = {
     tasks: [],
-    filter: "all"
+    filter: "all",
+    searchText: "",
+    sortOrder: "manual",
+    filterCategory: "all",    // ← nueva propiedad
+    filterPriority: "all"
 }
 
 export function taskReducer(state, action) {
@@ -40,6 +44,33 @@ export function taskReducer(state, action) {
                 ...state,
                 filter: action.payload
             }
+
+        case "SET_SEARCH":
+            return {
+                ...state,
+                searchText: action.payload
+            }
+
+        case "SET_SORT":
+            return {
+                ...state,
+                sortOrder: action.payload
+            }
+
+        case 'REORDER_TASKS':
+            {
+                const { sourceIndex, destIndex } = action.payload
+                const tasks = Array.from(state.tasks)
+                const [moved] = tasks.splice(sourceIndex, 1)
+                tasks.splice(destIndex, 0, moved)
+                return { ...state, tasks }
+            }
+
+        case "SET_CATEGORY_FILTER":
+            return { ...state, filterCategory: action.payload }
+
+        case "SET_PRIORITY_FILTER":
+            return { ...state, filterPriority: action.payload }
 
         default:
             return state
