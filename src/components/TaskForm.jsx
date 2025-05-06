@@ -35,8 +35,9 @@ export default function TaskForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label className="block text-black mb-1">Título</label>
+      <label htmlFor="title" className="block mb-1">Título</label>
         <input
+        id='title'
           value={title}
           onChange={e => setTitle(e.target.value)}
           required
@@ -44,16 +45,18 @@ export default function TaskForm() {
         />
       </div>
       <div>
-        <label className="block text-black mb-1">Descripción</label>
+      <label htmlFor="description" className="block mb-1">Descripción</label>
         <textarea
+        id='description'
           value={description}
           onChange={e => setDescription(e.target.value)}
           className="w-full p-2 border rounded"
         />
       </div>
       <div>
-        <label className="block text-black mb-1">Fecha de vencimiento</label>
+      <label htmlFor="dueDate" className="block mb-1">Fecha de vencimiento</label>
         <input
+        id='dueDate'
           type="date"
           value={dueDate}
           onChange={e => setDueDate(e.target.value)}
@@ -62,8 +65,9 @@ export default function TaskForm() {
         />
       </div>
       <div>
-        <label className="block text-black mb-1">Estado</label>
+      <label htmlFor="status" className="block mb-1">Estado</label>
         <select
+        id='status'
           value={status}
           onChange={e => setStatus(e.target.value)}
           className="w-full p-2 border rounded"
