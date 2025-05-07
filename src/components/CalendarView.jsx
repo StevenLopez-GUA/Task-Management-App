@@ -2,6 +2,7 @@
 import React, { useContext, useState, useMemo } from 'react'
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
+import '../assets/style/calendar-overrides.css'
 import { format, parseISO, isSameDay, differenceInCalendarDays } from 'date-fns'
 import { TaskContext } from '../context/TaskContext'
 import { ChevronLeft, ChevronRight } from 'lucide-react'

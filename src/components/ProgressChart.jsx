@@ -1,6 +1,6 @@
 // src/components/ProgressChart.jsx
 import React, { useContext, useMemo } from 'react'
-import { PieChart, Pie, Cell, Legend, Tooltip } from 'recharts'
+import { PieChart, Pie, Cell, Legend, Tooltip, ResponsiveContainer } from 'recharts'
 import { TaskContext } from '../context/TaskContext'
 
 const COLORS = ['#60A5FA', '#FBBF24', '#34D399'] // azul, amarillo, verde
@@ -18,15 +18,18 @@ export default function ProgressChart() {
     }, [state.tasks])
 
     return (
-        <div className="w-full max-w-sm mx-auto">
+        <div className="w-full max-w-lg mx-auto">
             {/* <h2 className="text-lg font-semibold mb-2 text-center">Progreso</h2> */}
-            <PieChart width={240} height={240}>
+            {/* <ResponsiveContainer> */}
+
+            
+            <PieChart width={600} height={600}>
                 <Pie
                     data={data}
                     dataKey="value"
                     nameKey="name"
                     cx="50%" cy="50%"
-                    outerRadius={80}
+                    outerRadius={200}
                     label
                 >
                     {data.map((_, i) => (
@@ -36,6 +39,7 @@ export default function ProgressChart() {
                 <Tooltip />
                 <Legend verticalAlign="bottom" height={36} />
             </PieChart>
+            {/* </ResponsiveContainer> */}
         </div>
     )
 }

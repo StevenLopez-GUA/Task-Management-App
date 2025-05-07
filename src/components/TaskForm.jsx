@@ -3,6 +3,7 @@ import React, { useState, useContext, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { TaskContext } from '../context/TaskContext'
 import { v4 as uuidv4 } from 'uuid'
+import Swal from 'sweetalert2'
 
 export default function TaskForm() {
   const { state, dispatch } = useContext(TaskContext)
@@ -29,7 +30,7 @@ export default function TaskForm() {
     }
   }, [isEdit, existing])
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
     const payload = {
       id: isEdit ? id : uuidv4(),
@@ -40,8 +41,32 @@ export default function TaskForm() {
       category,
       priority
     }
-    dispatch({ type: isEdit ? 'EDIT_TASK' : 'ADD_TASK', payload })
-    navigate('/tasks')
+    const action = isEdit ? 'actualizar' : 'crear'
+    const result = await Swal.fire({
+      title: `${isEdit ? 'Actualizar' : 'Crear'} tarea`,
+      text: `¿Deseas ${action} esta tarea?`,
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: `Sí, ${action}`,
+      cancelButtonText: 'Cancelar',
+      background: '#2d3748',
+      color: '#f7fafc',
+      confirmButtonColor: '#e53e3e',
+      cancelButtonColor: '#4a5568'
+    })
+    if (result.isConfirmed) {
+      dispatch({ type: isEdit ? 'EDIT_TASK' : 'ADD_TASK', payload })
+      await Swal.fire({
+        title: isEdit ? 'Actualizada' : 'Creada',
+        text: `La tarea ha sido ${isEdit ? 'actualizada' : 'creada'}.`,
+        icon: 'success',
+        timer: 1500,
+        showConfirmButton: false,
+        background: '#2d3748',
+        color: '#f7fafc'
+      })
+      navigate('/tasks')
+    }
   }
 
   return (
@@ -117,7 +142,6 @@ export default function TaskForm() {
         </select>
       </div>
 
-      {/* Botones de acción */}
       <div className="flex justify-end space-x-2">
         <button
           type="button"

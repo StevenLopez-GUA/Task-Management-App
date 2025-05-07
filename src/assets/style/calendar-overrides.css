@@ -1,0 +1,84 @@
+/* calendar-overrides.css */
+
+/* ===== Contenedor principal ===== */
+.react-calendar {
+    background-color:#5d6d7e;
+    color: black;
+    border-radius: .5rem; /* 8px */
+    padding: 1rem;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,.1),
+                0 4px 6px -2px rgba(0,0,0,.05);
+  }
+  
+  /* Modo oscuro (si tu <html> o <body> recibe la clase "dark") */
+  html.dark .react-calendar {
+    background-color: #1f2937;  /* gray-800 */
+    color: #f9fafb;             /* gray-100 */
+  }
+  
+  /* ===== Navegación (mes y flechas) ===== */
+  .react-calendar__navigation {
+    margin-bottom: 1rem;
+  }
+  .react-calendar__navigation button {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    padding: .25rem;
+    cursor: pointer;
+    color: inherit;
+  }
+  html.dark .react-calendar__navigation button {
+    color: #f9fafb;
+  }
+  
+  /* ===== Días de la semana ===== */
+  .react-calendar__month-view__weekdays__weekday {
+    font-weight: 500;
+    font-size: .875rem;         /* text-sm */
+    color: #1b2631;             /* gray-500 */
+  }
+  html.dark .react-calendar__month-view__weekdays__weekday {
+    color: #9ca3af;             /* gray-400 */
+  }
+  
+  /* ===== Cada casilla de día ===== */
+  .react-calendar__tile {
+    transition: background-color .2s, color .2s;
+  }
+  .react-calendar__tile:hover {
+    background-color: #e5e7eb;  /* gray-200 */
+  }
+  html.dark .react-calendar__tile:hover {
+    background-color: #374151;  /* gray-700 */
+  }
+  
+  /* ===== Hoy ===== */
+  .react-calendar__tile--now {
+    background-color: #FEF3C7;  /* yellow-100 */
+    color: #92400e;             /* yellow-800 */
+  }
+  html.dark .react-calendar__tile--now {
+    background-color: #78350f;  /* yellow-800 */
+    color: #fde68a;             /* yellow-200 */
+  }
+  
+  /* ===== Fecha seleccionada ===== */
+  .react-calendar__tile--active {
+    background-color: #bfdbfe;  /* blue-100 */
+    color: #1e3a8a;             /* blue-800 */
+  }
+  html.dark .react-calendar__tile--active {
+    background-color: #1e40af;  /* blue-800 */
+    color: #bfdbfe;             /* blue-200 */
+  }
+  
+  /* ===== Días con tareas (añade una clase extra en tileClassName) ===== */
+  .react-calendar__tile--hasActive {
+    font-weight: 600;
+    color: #1e3a8a;             /* blue-800 */
+  }
+  html.dark .react-calendar__tile--hasActive {
+    color: #bfdbfe;             /* blue-200 */
+  }
+  
