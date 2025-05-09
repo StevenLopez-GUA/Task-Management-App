@@ -6,7 +6,7 @@ import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd'
 
 export default function TaskList() {
     const { state, dispatch } = useContext(TaskContext)
-    const { tasks, filter, searchText, sortOrder, filterCategory, filterPriority } = state
+    const { tasks, filter, searchText = '', sortOrder, filterCategory, filterPriority } = state
 
     // Filtrar tareas según estado
     const filtered = useMemo(() => {

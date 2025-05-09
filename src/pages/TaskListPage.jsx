@@ -1,4 +1,3 @@
-// src/pages/TaskListPage.jsx
 import React, { useContext } from 'react'
 import { TaskContext } from '../context/TaskContext'
 import { Link } from 'react-router-dom'
@@ -108,14 +107,13 @@ export default function TaskListPage() {
                 </div>
             </div>
 
-            {/* Contenedor 50/50: Lista + Gráfica */}
+            
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* Izquierda: listado de tareas */}
+            
                 <div>
                     <TaskList />
                 </div>
 
-                {/* Derecha: gráfica de progreso centrada */}
                 <div className="flex justify-center items-start">
                     <ProgressChart />
                 </div>

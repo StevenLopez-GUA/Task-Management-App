@@ -1,4 +1,3 @@
-// src/components/TaskCard.jsx
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { TaskContext } from '../context/TaskContext'
@@ -84,7 +83,7 @@ export default function TaskCard({ task }) {
                     <span>Editar</span>
                 </button>
 
-                {/* Eliminar con SweetAlert (tema oscuro) */}
+                {/* Eliminar con SweetAlert */}
                 <button
                     onClick={async () => {
                         const result = await Swal.fire({

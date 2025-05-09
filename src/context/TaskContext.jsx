@@ -1,4 +1,3 @@
-// src/context/TaskContext.jsx
 import React, { createContext, useReducer, useEffect } from 'react'
 import { taskReducer, initialState } from '../reducers/taskReducer'
 
@@ -13,8 +12,8 @@ export function TaskProvider({ children }) {
             filter: init.filter,
             searchText: init.searchText,
             sortOrder: init.sortOrder,
-            filterCategory: init.filterCategory,   // ¡ahora definido!
-            filterPriority: init.filterPriority    // ¡y éste también!
+            filterCategory: init.filterCategory,   
+            filterPriority: init.filterPriority    
         })
     )
 

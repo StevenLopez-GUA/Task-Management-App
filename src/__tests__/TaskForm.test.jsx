@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent, act } from '@testing-library/react'
 import { TaskContext } from '../context/TaskContext'
 import TaskForm from '../components/TaskForm'
 import { MemoryRouter, Route, Routes } from 'react-router-dom'
@@ -23,7 +23,7 @@ describe('TaskForm', () => {
         expect(screen.getByRole('button', { name: /Crear tarea/i })).toBeInTheDocument()
     })
 
-    test('al enviar en “new” dispara ADD_TASK', () => {
+    test('al enviar en “new” dispara ADD_TASK', async () => {
         render(
             <TaskContext.Provider value={{ state: { tasks: [] }, dispatch }}>
                 <MemoryRouter initialEntries={['/tasks/new']}>
@@ -35,7 +35,9 @@ describe('TaskForm', () => {
         )
         fireEvent.change(screen.getByLabelText(/Título/i), { target: { value: 'Prueba' } })
         fireEvent.change(screen.getByLabelText(/Fecha de vencimiento/i), { target: { value: '2025-05-07' } })
-        fireEvent.click(screen.getByRole('button', { name: /Crear tarea/i }))
+        await act(async () => {
+            fireEvent.click(screen.getByRole('button', { name: /Crear tarea/i }));
+        });
         expect(dispatch).toHaveBeenCalledWith(expect.objectContaining({ type: 'ADD_TASK' }))
     })
 })
